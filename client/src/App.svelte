@@ -20,6 +20,9 @@
     //================== Routes =====================
 
     import { Router, Link, Route } from "svelte-routing";
+    import StartInfo from "./pages/StartInfo.svelte";
+
+
 </script>
 
 <div class="layout-container">
@@ -34,6 +37,7 @@
                 <Link to="/dashboard"><button>Dashboard</button></Link>
                 <Link to="/about"><button>About</button></Link>
                 <Link to="/contact"><button>Contact</button></Link>
+                <Link to="/startInfo"><button>Start Info</button></Link>
             {/if}
         </nav>
 
@@ -41,10 +45,10 @@
             <Route path="/"><Login /></Route>
             <Route path="/login"><Login /></Route>
             <Route path="/dashboard"><Dashboard /></Route>
-            <!-- <PrivateRoute path="/dashboard"><Dashboard /></PrivateRoute> -->
             <Route path="/about"><About /></Route>
             <Route path="/contact"><Contact /></Route>
             <Route path="/register"><Register/></Route>
+            <Route path="/startInfo"><StartInfo/></Route>
         </div>
 
         <Footer />
@@ -72,7 +76,7 @@
         z-index: 1000;
     }
 
-    a {
+ /*    a {
         text-decoration: none;
     }
 
@@ -85,7 +89,7 @@
     h4:hover {
         color: #f0f2f6;
     }
-
+ */
     .layout-container {
     display: flex;
     flex-direction: column;
@@ -96,7 +100,7 @@
     flex: 1;
 }
 
-footer {
+/* footer {
     margin-top: auto;
-}
+} */
 </style>

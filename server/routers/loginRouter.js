@@ -64,18 +64,20 @@ router.post('/api/register', async (req, res) => {
       });
     }
 
-    const hashedPassword = await hashedPassword(password);
+    const hashedPw = await hashedPassword(password);
 
     await db.run(`
       INSERT INTO users (username, hashed_password, email)
       VALUES (?, ?, ?)
-    `, [username, hashedPassword, email]);
+    `, [username, hashedPw, email]);
 
     res.status(201).send({
       data: 'user created'
     });
 
   } catch (error) {
+
+    console.log(error);
 
     res.status(500).send({
       error: 'server error'

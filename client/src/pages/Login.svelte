@@ -157,9 +157,5 @@
         color: #321900;
     }
 
-   /*  a {
-        color: #cf71ab;
-    } */
-
 
 </style>

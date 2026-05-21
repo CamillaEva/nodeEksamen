@@ -2,11 +2,11 @@
     import toastr from 'toastr';
     import { fetchPost } from '../util/fetchUtil.js';
 
-    let username = $state("");
+    let username = "";
 
-    let password = $state("");
+    let password = "";
 
-    let email = $state("");
+    let email = "";
 
     async function handleSignUp(event) {
         event.preventDefault();
