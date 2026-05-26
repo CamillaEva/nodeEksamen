@@ -1,28 +1,65 @@
-import 'dotenv/config';
 import express from 'express';
 
 const app = express();
-
-import cors from 'cors';
 
 import session from 'express-session';
 
 
 app.use(express.json());
 
+
+import 'dotenv/config';
+
+// ----- Socket -----
+
+import { Socket } from "socket.io";
+
+
+  const sessionMiddleware = session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false,
+            sameSite: "lax"
+   }
+});
+
+app.use(sessionMiddleware);
+
+import http from "http";
+
+const server = http.createServer(app);
+
+import { Server } from "socket.io";
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    credentials:true
+  }
+});
+
+io.engine.use(sessionMiddleware);
+
+io.on("connection", (socket) => {
+    console.log("user connected");
+
+    socket.on("motivation-message", (message) => {
+        socket.broadcast.emit("receive-message", message);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("user disconnected");
+    });
+});
+
+// ----- cors -----
+import cors from 'cors';
+
 app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true
 }));
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false }
-}
-));
- 
 
 
 // ----- Routers -----
@@ -31,11 +68,13 @@ import loginRouter from './routers/loginRouter.js';
 app.use(loginRouter);
 
 import pageRouter from './routers/pageRouter.js';
-app.use(pageRouter)
+app.use(pageRouter);
 
+import weightRouter from './routers/weightRouter.js';
+app.use(weightRouter); 
 
 // ----- Listen -----
 
 const PORT = process.env.PORT ?? 8080;
 
-app.listen(PORT, () => console.log("server running on port", PORT));
+server.listen(PORT, () => console.log("server running on port", PORT));
