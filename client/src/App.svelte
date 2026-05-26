@@ -12,6 +12,7 @@
     import About from "./pages/About.svelte";
     import Contact from "./pages/Contact.svelte";
     import Register from "./pages/Register.svelte";
+    import Settings from "./pages/Settings.svelte";
 
     //================== Components =====================
 
@@ -20,7 +21,7 @@
     //================== Routes =====================
 
     import { Router, Link, Route } from "svelte-routing";
-    import StartInfo from "./pages/StartInfo.svelte";
+   
 
 
 </script>
@@ -30,14 +31,15 @@
         <nav>
             {#if $user}
                 <Link to="/">
-                    <button on:click={handleLogout} class="logout-btn">
+                    <button on:click={handleLogout} class="header-button">
                         Logout
                     </button>
                 </Link>
-                <Link to="/dashboard"><button>Dashboard</button></Link>
-                <Link to="/about"><button>About</button></Link>
-                <Link to="/contact"><button>Contact</button></Link>
-                <Link to="/startInfo"><button>Start Info</button></Link>
+                <Link  to="/dashboard"><button class="header-button">Dashboard</button></Link>
+                <Link  to="/about"><button class="header-button">About</button></Link>
+                <Link  to="/contact"><button class="header-button">Contact</button></Link>
+                <Link  to="/settings"><button class="header-button">Settings</button></Link>
+               <!--  <Link  to="/startInfo"><button class="header-button">Start Info</button></Link> -->
             {/if}
         </nav>
 
@@ -47,8 +49,9 @@
             <Route path="/dashboard"><Dashboard /></Route>
             <Route path="/about"><About /></Route>
             <Route path="/contact"><Contact /></Route>
+            <Route path="/settings"><Settings/></Route>
             <Route path="/register"><Register/></Route>
-            <Route path="/startInfo"><StartInfo/></Route>
+            <!-- <Route path="/startInfo"><StartInfo/></Route> -->
         </div>
 
         <Footer />
@@ -69,7 +72,7 @@
         align-items: center;
         gap: 100px;
 
-        padding: 20px;
+        padding: 20px 0px; 
 
         background: transparent;
 
