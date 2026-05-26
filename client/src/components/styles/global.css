@@ -1,0 +1,60 @@
+.background {
+    background-color: #FDF0E6;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.headline {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #321900;
+    justify-self: center;
+}
+
+.info-card {
+    background: #F4B1B1;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.layout-container {
+    background-color: #fdf0e6;
+}
+
+
+.logout-btn {
+    background-color: #F4B1B1;
+}
+
+.header-button {
+    width: 100px;
+    height: 45px;
+    background: #F4B1B1;
+    border: none;
+    border-radius: 40px;
+    color: #321900;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid #321900;
+}
+
+h2 {
+    color: #321900
+}
+
+p {
+    color: #321900;
+}
+
+.page-container {
+    width: 70%;
+    justify-self: center;
+    justify-items: center;
+    height: 650px;
+    background: #f4b1b1;
+    border-radius: 40px;
+    color: #321900;
+    border: 2px solid #321900;
+    padding-top: 50px;
+}

@@ -8,7 +8,7 @@ const copyrightYearSpan = '@' + new Date().getFullYear();
 </script>
 
 
-<footer>
+<footer >
     <span>health-app {copyrightYearSpan} </span>
 </footer>
 
@@ -17,5 +17,10 @@ const copyrightYearSpan = '@' + new Date().getFullYear();
 
     span {
         color: rgb(244, 177, 177);
+
+    }
+
+    footer {
+        background-color: #FDF0E6;
     }
 </style>

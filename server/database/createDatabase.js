@@ -7,6 +7,7 @@ if (deleteMode) {
   await db.exec('DROP TABLE IF EXISTS users;');
   await db.exec('DROP TABLE IF EXISTS user_informations;');
   await db.exec('DROP TABLE IF EXISTS weight_tables;');
+  await db.exec('DROP TABLE IF EXISTS calories;');
 }
 
 await db.exec(`
@@ -30,8 +31,9 @@ CREATE TABLE IF NOT EXISTS user_informations(
 );
 
 CREATE TABLE IF NOT EXISTS weight_tables(
-    username TEXT PRIMARY KEY,
-    date_for_weight DATE,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    date_for_weight DATE NOT NULL,
     new_weight DECIMAL(5,2),
     FOREIGN KEY (username) REFERENCES users (username)
 );
@@ -47,7 +49,7 @@ if (deleteMode) {
 
     await db.run('INSERT INTO user_informations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? );', ['mads', '1998-01-08', 'male', 197, 'moderate', 'maintain_weight', 98.5, '2026-05-20', 3386]);
 
-    await db.run('INSERT INTO weight_tables VALUES (?, ?, ? );', ['mads', '2026-05-21', 95]);
+    await db.run('INSERT INTO weight_tables VALUES ( ?, ?, ? );', ['mads', '2026-05-21', 95]);
 
 
 

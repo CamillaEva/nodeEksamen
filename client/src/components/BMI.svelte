@@ -18,9 +18,26 @@ function getBMICategory() {
 
 </script>
 
-<div>
+<div class="container">
 {#if weight && height}
-    {calculateBMI()}
-    <p>you are in the bmi category: {getBMICategory()}</p>
+    <p>Your start BMI is:</p>
+    <p class="value">{calculateBMI()}</p>
+    <p>you are in the bmi category:</p> 
+    <p class="value">{getBMICategory()}</p>
 {/if}
 </div>
+
+
+
+<style>
+
+.value{
+    font-weight: bold;
+}
+
+ .container {
+        margin-top: 30px;
+    }
+
+
+</style>

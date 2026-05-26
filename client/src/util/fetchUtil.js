@@ -25,3 +25,30 @@ export async function fetchPost (endpoint, body) {
     console.log(error);
   }
 }
+
+
+export async function fetchPostJSON(endpoint, body) {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}${endpoint}`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    return await response.json();
+
+  } catch (error) {
+    console.log(error);
+
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+}
