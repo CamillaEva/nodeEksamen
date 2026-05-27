@@ -1,7 +1,6 @@
 <script>
     import { fetchPostJSON } from "../util/fetchUtil.js";
     import { getDailyCalorieGoal } from "../util/calorieCalculatorUtil.js";
-    
 
     const { onSubmit = () => {} } = $props();
 
@@ -11,8 +10,6 @@
     let start_weight = $state("");
     let activity_level = $state("");
     let goal = $state("");
-
-    
 
     async function handleSubmitInfoForm() {
         const calorie_goal = getDailyCalorieGoal(
@@ -35,7 +32,6 @@
             calorie_goal,
         });
 
-
         if (result?.success) {
             await onSubmit();
         } else {
@@ -44,71 +40,65 @@
     }
 </script>
 
-<div class="background">
-    <div class="startInfo-wrapper">
-        <div class="input-box">
-            <input type="date" bind:value={birthday} required />
-        </div>
-        <div class="select-box">
-            <select bind:value={gender} required>
-                <option class="placeholder-text" value="" disabled selected
-                    >Gender</option
-                >
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="non_binary">Non-binary</option>
-                <option value="transgender">Transgender</option>
-                <option value="genderfluid">Genderfluid</option>
-                <option value="prefer_not_to_say">Prefer not to say</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="input-box">
-            <input
-                type="number"
-                bind:value={height}
-                placeholder="Height in cm"
-                required
-            />
-        </div>
-        <div class="input-box">
-            <input
-                type="number"
-                bind:value={start_weight}
-                placeholder="Start weight in kgs"
-                required
-            />
-        </div>
-        <div class="select-box">
-            <select bind:value={activity_level} required>
-                <option class="placeholder-text" value="" disabled selected
-                    >choose an activity level</option
-                >
-                <option value="low">Low activity</option>
-                <option value="moderate">Moderate activity</option>
-                <option value="high"> High activity</option>
-                <option value="very_high">Very high activity</option>
-            </select>
-        </div>
-        <div class="select-box">
-            <select bind:value={goal} required>
-                <option class="placeholder-text" value="" disabled selected
-                    >Goal</option
-                >
-                <option value="lose_weight">Lose Weight</option>
-                <option value="maintain_weight">Maintain Weight</option>
-                <option value="gain_weight">Gain Weight</option>
-            </select>
-        </div>
-
-        <button
-            type="button"
-            class="start-button"
-            onclick={handleSubmitInfoForm}
-        >
-            Start my journey
-        </button>
+<div class="startInfo-wrapper">
+    <div class="input-box">
+        <input type="date" bind:value={birthday} required />
     </div>
+    <div class="select-box">
+        <select bind:value={gender} required>
+            <option class="placeholder-text" value="" disabled selected
+                >Gender</option
+            >
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="non_binary">Non-binary</option>
+            <option value="transgender">Transgender</option>
+            <option value="genderfluid">Genderfluid</option>
+            <option value="prefer_not_to_say">Prefer not to say</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="input-box">
+        <input
+            type="number"
+            bind:value={height}
+            placeholder="Height in cm"
+            required
+        />
+    </div>
+    <div class="input-box">
+        <input
+            type="number"
+            bind:value={start_weight}
+            placeholder="Start weight in kgs"
+            required
+        />
+    </div>
+    <div class="select-box">
+        <select bind:value={activity_level} required>
+            <option class="placeholder-text" value="" disabled selected
+                >choose an activity level</option
+            >
+            <option value="low">Low activity</option>
+            <option value="moderate">Moderate activity</option>
+            <option value="high"> High activity</option>
+            <option value="very_high">Very high activity</option>
+        </select>
+    </div>
+    <div class="select-box">
+        <select bind:value={goal} required>
+            <option class="placeholder-text" value="" disabled selected
+                >Goal</option
+            >
+            <option value="lose_weight">Lose Weight</option>
+            <option value="maintain_weight">Maintain Weight</option>
+            <option value="gain_weight">Gain Weight</option>
+        </select>
+    </div>
+
+    <button type="button" class="start-button" onclick={handleSubmitInfoForm}>
+        Start my journey
+    </button>
 </div>
 
 <style>
@@ -121,14 +111,6 @@
         font-family: "Poppins", sans-serif;
     }
 
-    .background {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: #fdf0e6;
-    }
-
     .startInfo-wrapper {
         width: 600px;
         height: 550px;
@@ -139,6 +121,9 @@
         color: #fff;
         border-radius: 10px;
         padding: 30px 40px;
+        justify-self: center;
+        background-color: #FDF0E6;
+        border: 2px solid #321900;
     }
 
     .startInfo-wrapper .input-box {

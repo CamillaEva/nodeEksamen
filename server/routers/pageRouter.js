@@ -70,8 +70,8 @@ router.get('/api/dashboard', async (req, res) => {
         FROM weight_tables
         WHERE username = ?
         ORDER BY id DESC
-        LIMIT 1
-    `, [username]);
+        LIMIT 1`,
+        [username]);
 
   let userInfo = null;
 

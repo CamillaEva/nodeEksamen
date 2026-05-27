@@ -23,8 +23,8 @@
 
     checkSession();
 
+    
     // fetching userdata
-
     onMount(async () => {
         await checkSession();
 
@@ -91,20 +91,19 @@
             </div>
 
             <div class="info-containers">
-                <h2>Chat</h2>
+                <h2>Motivation</h2>
                 <Chat/>
             </div>
         </div>
     {:else}
         <!-- modal til start info - if user don't have a calorie_goal yet -->
         <div class="calorie-container">
-            <Modal bind:showModal>
-                {#snippet header()}
+            <Modal showModal={showModal}>
                     <h2>
                         Get started!
                         <small><em>input your informations here</em></small>
                     </h2>
-                {/snippet}
+               
 
                 <StartInfo onSubmit={handleInfoSubmitted} />
             </Modal>
@@ -134,7 +133,6 @@
         background-color: #f4b1b1;
         border: 2px solid #321900;
         border-radius: 40px;
-        width: %;
         height: 280px;
         text-align: center;
         padding-top: 20px;

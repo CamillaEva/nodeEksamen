@@ -1,51 +1,33 @@
 <script>
-    let { showModal = $bindable(), header, children } = $props();
-
-    let dialog = $state();
-
-    $effect(() => {
-        if (showModal) dialog.showModal();
-    });
+    export let showModal = false;
 </script>
 
-<dialog
-    bind:this={dialog}
-    onclose={() => (showModal = false)}
-    onclick={(e) => {
-        if (e.target === dialog) dialog.close();
-    }}
->
-    <div>
-        {@render header?.()}
-        <hr />
-        {@render children?.()}
-        <hr />
+{#if showModal}
+    <div class="backdrop">
+        <div class="modal">
+            <slot />
+        </div>
     </div>
-</dialog>
+{/if}
 
 <style>
-    dialog {
-        max-width: 32em;
-        border-radius: 0.2em;
-        border: none;
-        padding:0;
+    .backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    dialog::backdrop {
-        background: rgba(0, 0, 0, 0.3);
+
+    .modal {
+        background: #F9C5C4;
+        border: 2px solid #321900;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 700px;
+        height: 700px;
+        
     }
-    dialog > div {
-        padding: 1em;
-    }
-    dialog[open] {
-        animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    @keyframes zoom {
-        from {
-            transform: scale(0.95);
-        }
-        to {
-            transform: scale(1);
-        }
-    }
-   
 </style>

@@ -73,6 +73,9 @@ app.use(pageRouter);
 import weightRouter from './routers/weightRouter.js';
 app.use(weightRouter); 
 
+import calorieRouter from './routers/calorieRouter.js';
+app.use(calorieRouter);
+
 // ----- Listen -----
 
 const PORT = process.env.PORT ?? 8080;
