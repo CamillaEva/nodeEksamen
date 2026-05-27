@@ -1,6 +1,6 @@
 <script>
-    import toastr from 'toastr';
-    import { fetchPost } from '../util/fetchUtil.js';
+    import toastr from "toastr";
+    import { fetchPost } from "../util/fetchUtil.js";
 
     let username = "";
 
@@ -10,7 +10,11 @@
 
     async function handleSignUp(event) {
         event.preventDefault();
-        const response = await fetchPost("/api/register", { username, email, password });
+        const response = await fetchPost("/api/register", {
+            username,
+            email,
+            password,
+        });
 
         if (response.ok) {
             toastr.info("User created successfully!");
@@ -19,7 +23,7 @@
             }, 1000);
         } else {
             const result = await response?.json();
-            toastr.warning("could not create user.");
+            toastr.warning(result.message || "could not create user.");
         }
     }
 </script>
@@ -123,7 +127,7 @@
     }
 
     .input-box input::placeholder {
-        color: 50, 25, 0, 0.2;
+        color: rgba(50, 25, 0, 0.2);
     }
 
     .signUp-button {

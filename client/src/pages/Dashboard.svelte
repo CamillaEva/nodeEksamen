@@ -9,7 +9,6 @@
     import Calories from "../components/Calories.svelte";
     import Foodlog from "../components/Foodlog.svelte";
     import Chat from "../components/Chat.svelte";
-   
 
     let showModal = $state(false);
 
@@ -23,7 +22,6 @@
 
     checkSession();
 
-    
     // fetching userdata
     onMount(async () => {
         await checkSession();
@@ -37,12 +35,10 @@
             if (!result.userInfo?.calorie_goal) {
                 showModal = true;
             }
-
         } else {
             window.location.href = "/login";
         }
     });
-
 
     async function handleInfoSubmitted() {
         showModal = false;
@@ -53,10 +49,6 @@
             showModal = false;
         }
     }
-
-
-
-
 </script>
 
 <!-- html for dashboard for the logged in user -->
@@ -67,12 +59,12 @@
     {#if $userInfo?.calorie_goal}
         <div class="info-containers-row">
             <div class="info-containers">
-                <Weight/>
+                <Weight />
             </div>
 
             <div class="info-containers">
                 <h2>Log Food</h2>
-                <Foodlog/>
+                <Foodlog />
             </div>
 
             <div class="small-info-containers-container">
@@ -86,24 +78,22 @@
                         weight={$userInfo.start_weight}
                         height={$userInfo.height}
                     />
-                
                 </div>
             </div>
 
             <div class="info-containers">
                 <h2>Motivation</h2>
-                <Chat/>
+                <Chat />
             </div>
         </div>
     {:else}
         <!-- modal til start info - if user don't have a calorie_goal yet -->
         <div class="calorie-container">
-            <Modal showModal={showModal}>
-                    <h2>
-                        Get started!
-                        <small><em>input your informations here</em></small>
-                    </h2>
-               
+            <Modal {showModal}>
+                <h2>
+                    Get started!
+                    <small><em>input your informations here</em></small>
+                </h2>
 
                 <StartInfo onSubmit={handleInfoSubmitted} />
             </Modal>

@@ -1,5 +1,5 @@
 <script>
-    import { fetchPostJSON } from "../util/fetchUtil.js";
+    import { fetchPost } from "../util/fetchUtil.js";
     import { getDailyCalorieGoal } from "../util/calorieCalculatorUtil.js";
 
     const { onSubmit = () => {} } = $props();
@@ -21,7 +21,7 @@
             goal,
         );
 
-        const result = await fetchPostJSON("/api/startInfo", {
+        const response = await fetchPost("/api/startInfo", {
             birthday,
             gender,
             height: parseInt(height),
@@ -31,6 +31,8 @@
             start_date: new Date().toISOString().split("T")[0],
             calorie_goal,
         });
+
+        const result = await response.json();
 
         if (result?.success) {
             await onSubmit();
@@ -122,7 +124,7 @@
         border-radius: 10px;
         padding: 30px 40px;
         justify-self: center;
-        background-color: #FDF0E6;
+        background-color: #fdf0e6;
         border: 2px solid #321900;
     }
 

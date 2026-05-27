@@ -15,13 +15,14 @@ import 'dotenv/config';
 import { Socket } from "socket.io";
 
 
-  const sessionMiddleware = session({
+const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false,
-            sameSite: "lax"
-   }
+  cookie: {
+    secure: false,
+    sameSite: "lax"
+  }
 });
 
 app.use(sessionMiddleware);
@@ -35,22 +36,22 @@ import { Server } from "socket.io";
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5173",
-    credentials:true
+    credentials: true
   }
 });
 
 io.engine.use(sessionMiddleware);
 
 io.on("connection", (socket) => {
-    console.log("user connected");
+  console.log("user connected");
 
-    socket.on("motivation-message", (message) => {
-        socket.broadcast.emit("receive-message", message);
-    });
+  socket.on("motivation-message", (message) => {
+    socket.broadcast.emit("receive-message", message);
+  });
 
-    socket.on("disconnect", () => {
-        console.log("user disconnected");
-    });
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
 });
 
 // ----- cors -----
@@ -71,7 +72,7 @@ import pageRouter from './routers/pageRouter.js';
 app.use(pageRouter);
 
 import weightRouter from './routers/weightRouter.js';
-app.use(weightRouter); 
+app.use(weightRouter);
 
 import calorieRouter from './routers/calorieRouter.js';
 app.use(calorieRouter);

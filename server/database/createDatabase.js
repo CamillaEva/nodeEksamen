@@ -4,10 +4,10 @@ import { hashedPassword } from '../util/passwordHashing.js';
 const deleteMode = process.argv.includes('--delete');
 
 if (deleteMode) {
-  await db.exec('DROP TABLE IF EXISTS users;');
-  await db.exec('DROP TABLE IF EXISTS user_informations;');
-  await db.exec('DROP TABLE IF EXISTS weight_tables;');
-  await db.exec('DROP TABLE IF EXISTS calories;');
+    await db.exec('DROP TABLE IF EXISTS users;');
+    await db.exec('DROP TABLE IF EXISTS user_informations;');
+    await db.exec('DROP TABLE IF EXISTS weight_tables;');
+    await db.exec('DROP TABLE IF EXISTS calories;');
 }
 
 await db.exec(`
@@ -61,4 +61,3 @@ if (deleteMode) {
 
 
 }
- 

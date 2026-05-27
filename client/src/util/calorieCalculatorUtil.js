@@ -20,7 +20,7 @@ export function calculateAge(birthday) {
 
 export function getDailyCalorieGoal(weight, height, gender, activity_level, birthday, goal) {
     
-    //start by calculation BMR (basal metabolic rate)
+    // start by calculation BMR (basal metabolic rate)
     const age = calculateAge(birthday);
 
     let bmr;

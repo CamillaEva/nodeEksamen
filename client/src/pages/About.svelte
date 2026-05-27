@@ -2,10 +2,10 @@
 <div class="page-container">
     <h2>Our App</h2>
     <div class="features">
-    <h3>
-        Our app, is made for you, who wants to track your health habits and see
-        your progress in your weight goals.
-    </h3>
+        <h3>
+            Our app, is made for you, who wants to track your health habits and
+            see your progress in your weight goals.
+        </h3>
     </div>
 
     <div class="features">
@@ -22,8 +22,6 @@
 </div>
 
 <style>
-   
-
     .features {
         width: 80%;
     }
