@@ -6,46 +6,6 @@ const router = Router();
 // ----- GET -----
 
 
-/* router.get('/api/dashboard', async (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).send({ error: 'Not authenticated' });
-    }
-
-    const username = req.session.user.username;
-
-    const result = await db.get(`
-        SELECT * 
-        FROM user_informations
-        WHERE username = ?`, 
-        [username]);
-
-    const result2 = await db.all(`
-      SELECT * 
-      FROM weight_tables
-      WHERE username = ?`,
-    [username]);
-
-     
-    const latestWeight = await db.get(`
-      SELECT new_weight
-      FROM weight_tables
-      WHERE username = ?
-      ORDER BY date_for_weight DESC, id DESC
-      LIMIT 1
-  `, [username]);
-
-    res.send({
-        user: username,
-        userInfo: {
-          ...result,
-          currentWeight: latestWeight?.new_weight ?? result.start_weight
-        }, 
-        weightInfo: result2
-    });
-
-    
-}); */
-
 router.get('/api/dashboard', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).send({ error: 'Not authenticated' });
@@ -131,34 +91,8 @@ router.post('/api/startInfo', async (req, res) => {
     });
   }
 
-  /*     const sql = `INSERT INTO user_informations
-                  (username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  
-      db.run(sql, [
-        username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal
-      ],
-    function (err) {
-      if (err) {
-        return res.status(500).json({ error: err.message });
-      }
-  
-      res.json({ success: true });
-    }); */
-
 
 });
-
-
-
-
-
-// ----- PUT -----
-
-
-
-
-// ----- DELETE -----
 
 
 
