@@ -21,9 +21,6 @@
     //================== Routes =====================
 
     import { Router, Link, Route } from "svelte-routing";
-   
-
-
 </script>
 
 <div class="layout-container">
@@ -35,11 +32,18 @@
                         Logout
                     </button>
                 </Link>
-                <Link  to="/dashboard"><button class="header-button">Dashboard</button></Link>
-                <Link  to="/about"><button class="header-button">About</button></Link>
-                <Link  to="/contact"><button class="header-button">Contact</button></Link>
-                <Link  to="/settings"><button class="header-button">Settings</button></Link>
-               <!--  <Link  to="/startInfo"><button class="header-button">Start Info</button></Link> -->
+                <Link to="/dashboard"
+                    ><button class="header-button">Dashboard</button></Link
+                >
+                <Link to="/about"
+                    ><button class="header-button">About</button></Link
+                >
+                <Link to="/contact"
+                    ><button class="header-button">Contact</button></Link
+                >
+                <Link to="/settings"
+                    ><button class="header-button">Settings</button></Link
+                >
             {/if}
         </nav>
 
@@ -49,19 +53,15 @@
             <Route path="/dashboard"><Dashboard /></Route>
             <Route path="/about"><About /></Route>
             <Route path="/contact"><Contact /></Route>
-            <Route path="/settings"><Settings/></Route>
-            <Route path="/register"><Register/></Route>
-            <!-- <Route path="/startInfo"><StartInfo/></Route> -->
+            <Route path="/settings"><Settings /></Route>
+            <Route path="/register"><Register /></Route>
         </div>
 
         <Footer />
     </Router>
 </div>
 
-
 <style>
-   
-    
     nav {
         top: 0;
         left: 0;
@@ -72,38 +72,20 @@
         align-items: center;
         gap: 100px;
 
-        padding: 20px 0px; 
+        padding: 20px 0px;
 
         background: transparent;
 
         z-index: 1000;
     }
 
- /*    a {
-        text-decoration: none;
-    }
-
-    h4 {
-        color: #F9C5C4;
-        font-size: 18px;
-        transition: 0.2s;
-    }
-
-    h4:hover {
-        color: #f0f2f6;
-    }
- */
     .layout-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
 
-.links {
-    flex: 1;
-}
-
-/* footer {
-    margin-top: auto;
-} */
+    .links {
+        flex: 1;
+    }
 </style>

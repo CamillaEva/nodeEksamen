@@ -3,9 +3,9 @@
     import { fetchPost } from "../util/fetchUtil.js";
     import { user } from "../stores/AuthStore.js";
 
-    let username = $state('');
+    let username = $state("");
 
-    let password = $state('');
+    let password = $state("");
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -21,8 +21,6 @@
             toastr.warning("error logging in to site.");
         }
     }
-
-
 </script>
 
 <div class="login-background">
@@ -54,16 +52,11 @@
                     <a href="/register">Register</a>
                 </p>
             </div>
-
-
-        
         </form>
     </div>
 </div>
 
 <style>
-
-
     * {
         margin: 0;
         padding: 0;
@@ -108,7 +101,7 @@
     .input-box input {
         width: 100%;
         height: 100%;
-        background-color: rgba(244, 177, 177, 0.550);
+        background-color: rgba(244, 177, 177, 0.55);
         border: none;
         outline: none;
         border: 2px solid rgba(255, 255, 255, 0.2);
@@ -125,7 +118,7 @@
     .Login-button {
         width: 100%;
         height: 45px;
-        background:#F4B1B1;
+        background: #f4b1b1;
         border: none;
         outline: none;
         border-radius: 40px;
@@ -136,7 +129,7 @@
         font-weight: 600;
     }
 
-     .login-wrapper .register-link {
+    .login-wrapper .register-link {
         font-size: 14.5px;
         text-align: center;
         margin: 20px 0 15px;
@@ -156,6 +149,4 @@
     h1 {
         color: #321900;
     }
-
-
 </style>

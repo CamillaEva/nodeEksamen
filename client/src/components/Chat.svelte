@@ -30,8 +30,6 @@
             socket.off("receive-message", handler);
         };
     });
-
-
 </script>
 
 <div class="message-container">
@@ -44,11 +42,15 @@
 
 <h4>Send motivation to other users.</h4>
 
-<button onclick={() => sendMessage("You've got this!")}> You've got this! </button>
+<button onclick={() => sendMessage("You've got this!")}>
+    You've got this!
+</button>
 
 <button onclick={() => sendMessage("Keep going!")}> Keep going! </button>
 
-<button onclick={() => sendMessage("Run, Forrest, run!")}> Run, Forrest, run! </button>
+<button onclick={() => sendMessage("Run, Forrest, run!")}>
+    Run, Forrest, run!
+</button>
 
 <button onclick={() => sendMessage("You tha bomb!")}> You tha bomb! </button>
 

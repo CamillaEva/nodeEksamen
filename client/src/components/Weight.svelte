@@ -20,13 +20,8 @@
     }
 
     function getCurrentWeight() {
-        if ($userInfo.currentWeight) {
-            return $userInfo.currentWeight;
-        }
-
-        return $userInfo.start_weight;
+        return $userInfo.currentWeight || $userInfo.start_weight;
     }
-    
 </script>
 
 <div>
@@ -37,11 +32,10 @@
         <p class="value">{$userInfo?.start_weight} kg</p>
     </div>
 
-    
     <div class="weight-container">
         <p>current weight:</p>
         <p class="value">
-        {getCurrentWeight()} kg
+            {getCurrentWeight()} kg
         </p>
     </div>
 
@@ -65,7 +59,7 @@
 
     <div class="weight-container">
         <p>difference:</p>
-        <p class="value"> {getCurrentWeight() - $userInfo.start_weight} kg</p>
+        <p class="value">{getCurrentWeight() - $userInfo.start_weight} kg</p>
     </div>
 </div>
 
@@ -100,7 +94,6 @@
         font-weight: 600;
         border: 2px solid #321900;
         margin-top: 20px;
-        
     }
 
     .input-button {

@@ -14,7 +14,7 @@
     .backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
 
         display: flex;
         justify-content: center;
@@ -22,12 +22,11 @@
     }
 
     .modal {
-        background: #F9C5C4;
+        background: #f9c5c4;
         border: 2px solid #321900;
         padding: 2rem;
         border-radius: 10px;
         width: 700px;
         height: 700px;
-        
     }
 </style>
