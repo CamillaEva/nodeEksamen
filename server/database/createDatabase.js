@@ -38,6 +38,14 @@ CREATE TABLE IF NOT EXISTS weight_tables(
     FOREIGN KEY (username) REFERENCES users (username)
 );
 
+CREATE TABLE IF NOT EXISTS calories_tables(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    date_for_calories DATE NOT NULL,
+    calories INTEGER NOT NULL,
+    FOREIGN KEY (username) REFERENCES users (username)
+);
+
 `);
 
 if (deleteMode) {
@@ -49,7 +57,6 @@ if (deleteMode) {
 
     await db.run('INSERT INTO user_informations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? );', ['mads', '1998-01-08', 'male', 197, 'moderate', 'maintain_weight', 98.5, '2026-05-20', 3386]);
 
-    await db.run('INSERT INTO weight_tables VALUES ( ?, ?, ? );', ['mads', '2026-05-21', 95]);
 
 
 
