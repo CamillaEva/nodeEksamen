@@ -72,10 +72,6 @@ router.post('/api/startInfo', async (req, res) => {
 
   try {
     await db.run(`
-        DELETE FROM user_informations WHERE username = ?
-        `, [username]);
-
-    await db.run(`
         INSERT INTO user_informations
         (username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -91,10 +87,7 @@ router.post('/api/startInfo', async (req, res) => {
     });
   }
 
-
 });
-
-
 
 
 export default router; 
