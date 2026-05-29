@@ -12,7 +12,6 @@
     import About from "./pages/About.svelte";
     import Contact from "./pages/Contact.svelte";
     import Register from "./pages/Register.svelte";
-    import Settings from "./pages/Settings.svelte";
 
     //================== Components =====================
 
@@ -41,9 +40,7 @@
                 <Link to="/contact"
                     ><button class="header-button">Contact</button></Link
                 >
-                <Link to="/settings"
-                    ><button class="header-button">Settings</button></Link
-                >
+               
             {/if}
         </nav>
 
@@ -53,7 +50,6 @@
             <Route path="/dashboard"><Dashboard /></Route>
             <Route path="/about"><About /></Route>
             <Route path="/contact"><Contact /></Route>
-            <Route path="/settings"><Settings /></Route>
             <Route path="/register"><Register /></Route>
         </div>
 
