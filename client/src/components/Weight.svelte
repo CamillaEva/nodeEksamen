@@ -59,7 +59,7 @@
 
     <div class="weight-container">
         <p>difference:</p>
-        <p class="value">{getCurrentWeight() - $userInfo.start_weight} kg</p>
+        <p class="value">{(getCurrentWeight() - $userInfo.start_weight).toFixed(1)} kg</p>
     </div>
 </div>
 
