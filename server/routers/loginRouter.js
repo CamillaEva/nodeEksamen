@@ -51,39 +51,29 @@ router.get('/api/session', (req, res) => {
 router.post('/api/register', async (req, res) => {
   const { username, email, password } = req.body;
 
-  try {
 
-    const doesUserExist = await db.all(`
+
+  const doesUserExist = await db.all(`
       SELECT * FROM users
       WHERE username = ?
     `, [username]);
 
-    if (doesUserExist.length > 0) {
-      return res.status(409).send({
-        error: 'username already exists'
-      });
-    }
+  if (doesUserExist.length > 0) {
+    return res.status(409).send({
+      error: 'username already exists'
+    });
+  }
 
-    const hashedPw = await hashedPassword(password);
+  const hashedPw = await hashedPassword(password);
 
-    await db.run(`
+  await db.run(`
       INSERT INTO users (username, hashed_password, email)
       VALUES (?, ?, ?)
     `, [username, hashedPw, email]);
 
-    res.status(201).send({
-      data: 'user created'
-    });
-
-  } catch (error) {
-
-    console.log(error);
-
-    res.status(500).send({
-      error: 'server error'
-    });
-  }
+  res.status(201).send({
+    data: 'user created'
+  });
 });
-
 
 export default router;

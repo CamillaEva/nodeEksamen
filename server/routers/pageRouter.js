@@ -56,7 +56,7 @@ router.get('/api/dashboard', async (req, res) => {
 // ----- POST -----
 
 router.post('/api/startInfo', async (req, res) => {
-  console.log("Request received!", req.body);
+
   const {
     birthday, gender, height,
     activity_level, goal, start_weight,
@@ -70,22 +70,14 @@ router.post('/api/startInfo', async (req, res) => {
     return res.status(401).json({ error: 'not logged in' });
   }
 
-  try {
-    await db.run(`
-        INSERT INTO user_informations
-        (username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `, [username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal]);
+  
+  await db.run(`
+      INSERT INTO user_informations
+      (username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `, [username, birthday, gender, height, activity_level, goal, start_weight, start_date, calorie_goal]);
 
-    return res.status(200).json({ success: true });
-
-  } catch (err) {
-    console.error("Database error:", err);
-    return res.status(500).json({
-      success: false,
-      error: err.message
-    });
-  }
+  return res.status(200).json({ success: true });
 
 });
 

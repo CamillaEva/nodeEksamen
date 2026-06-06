@@ -14,7 +14,8 @@ router.post('/api/weight', async (req, res) => {
     }
 
     const { newWeight } = req.body;
-    const date = new Date().toISOString().split("T")[0]; // formats any date as YYYY-MM-DD
+    // formats any date as YYYY-MM-DD
+    const date = new Date().toISOString().split("T")[0];
 
 
 
