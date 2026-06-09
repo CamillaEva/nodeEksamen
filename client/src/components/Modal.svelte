@@ -1,4 +1,5 @@
 <script>
+// ----- prop fra parent(dashboard) -----
     export let showModal = false;
 </script>
 

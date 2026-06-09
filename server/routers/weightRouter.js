@@ -4,7 +4,7 @@ import db from '../database/connection.js';
 
 const router = Router();
 
-
+// ----- POST -----
 router.post('/api/weight', async (req, res) => {
 
     const username = req.session.user?.username;

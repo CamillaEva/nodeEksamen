@@ -12,6 +12,8 @@
     let goal = $state("");
 
     async function handleSubmitInfoForm() {
+
+        // ----- calculatin calorie goal -----
         const calorie_goal = getDailyCalorieGoal(
             parseFloat(start_weight),
             parseInt(height),
@@ -28,6 +30,7 @@
             activity_level,
             goal,
             start_weight: parseFloat(start_weight),
+            // formats any date as YYYY-MM-DD
             start_date: new Date().toISOString().split("T")[0],
             calorie_goal,
         });

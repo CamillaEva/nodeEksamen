@@ -24,8 +24,8 @@
 
 <div class="layout-container">
     <Router>
-        <nav>
-            {#if $user}
+        {#if $user}
+            <nav>
                 <Link to="/">
                     <button on:click={handleLogout} class="header-button">
                         Logout
@@ -40,9 +40,8 @@
                 <Link to="/contact"
                     ><button class="header-button">Contact</button></Link
                 >
-               
-            {/if}
-        </nav>
+            </nav>
+        {/if}
 
         <div class="links">
             <Route path="/"><Login /></Route>

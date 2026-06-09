@@ -3,6 +3,7 @@ import db from '../database/connection.js';
 
 const router = Router();
 
+// ----- POST -----
 
 router.post('/api/calories', async (req, res) => {
 
@@ -13,6 +14,7 @@ router.post('/api/calories', async (req, res) => {
     }
 
     const { calories } = req.body;
+    // formats any date as YYYY-MM-DD
     const date = new Date().toISOString().split("T")[0];
 
     const result = await db.run(`
@@ -21,9 +23,10 @@ router.post('/api/calories', async (req, res) => {
         VALUES (?, ?, ?);`,
         [username, date, calories]);
 
-    res.send({ data: calories })
+    res.send({ calories: calories })
 });
 
+// ----- GET -----
 
 router.get('/api/calories', async (req, res) => {
 
@@ -34,6 +37,7 @@ router.get('/api/calories', async (req, res) => {
         return res.status(401).json({ error: "not logged in" });
     }
 
+    // formats any date as YYYY-MM-DD
     const date = new Date().toISOString().split("T")[0];
 
 

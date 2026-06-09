@@ -3,6 +3,9 @@
     import { motivationMessages } from "../stores/SocketStore.js";
     import { onMount } from "svelte";
 
+
+    let customMessage = "";
+
     function sendMessage(text) {
         socket.emit("motivation-message", {
             text,

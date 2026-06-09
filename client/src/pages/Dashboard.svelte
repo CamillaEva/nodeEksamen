@@ -2,6 +2,7 @@
     import { user, userInfo } from "../stores/AuthStore.js";
     import { fetchGet } from "../util/fetchUtil.js";
     import { onMount } from "svelte";
+    // ----- child components -----
     import Modal from "../components/Modal.svelte";
     import StartInfo from "./StartInfo.svelte";
     import BMI from "../components/BMI.svelte";
@@ -10,9 +11,10 @@
     import Foodlog from "../components/Foodlog.svelte";
     import Chat from "../components/Chat.svelte";
 
+
     let showModal = $state(false);
 
-    // checking session
+    // ----- checking session -----
     export async function checkSession() {
         const result = await fetchGet("/api/session");
         if (!result.data) {
@@ -22,7 +24,7 @@
 
     checkSession();
 
-    // fetching userdata
+    // ----- fetching userdata -----
     onMount(async () => {
         await checkSession();
 
@@ -40,6 +42,8 @@
         }
     });
 
+
+    // -----  -----
     async function handleInfoSubmitted() {
         showModal = false;
         const result = await fetchGet("/api/dashboard");

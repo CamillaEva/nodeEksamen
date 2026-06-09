@@ -5,6 +5,8 @@ import { sendMail } from '../util/mailerTransporter.js';
 
 const router = Router();
 
+
+// ----- login -----
 router.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -33,12 +35,15 @@ router.post('/api/login', async (req, res) => {
   }
 });
 
+
+// ----- logout -----
 router.post('/api/logout', (req, res) => {
   req.session.destroy((error) => {
     res.send({ data: 'you are now logged out' });
   });
 });
 
+// ----- check session -----
 router.get('/api/session', (req, res) => {
   if (req.session.user) {
     res.send({ data: req.session.user });
@@ -47,7 +52,7 @@ router.get('/api/session', (req, res) => {
   }
 });
 
-
+// ----- register new user -----
 router.post('/api/register', async (req, res) => {
   const { username, email, password } = req.body;
 

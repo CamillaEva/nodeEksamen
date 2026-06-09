@@ -1,19 +1,20 @@
+// ----- Imports -----
+import 'dotenv/config';
 import express from 'express';
+import session from 'express-session';
+import cors from 'cors';
+import http from "http";
+import { Socket } from "socket.io";
+import { Server } from "socket.io";
+
+
+// ----- Express -----
 
 const app = express();
 
-import session from 'express-session';
-
-
 app.use(express.json());
 
-
-import 'dotenv/config';
-
-// ----- Socket -----
-
-import { Socket } from "socket.io";
-
+// ----- Session -----
 
 const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET,
@@ -27,11 +28,21 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
-import http from "http";
+
+// ----- cors -----
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
+
+
+// ----- HTTP Server -----
 
 const server = http.createServer(app);
 
-import { Server } from "socket.io";
+
+// ----- Socket.IO -----
 
 const io = new Server(server, {
   cors: {
@@ -53,14 +64,6 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
   });
 });
-
-// ----- cors -----
-import cors from 'cors';
-
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
-}));
 
 
 // ----- Routers -----
