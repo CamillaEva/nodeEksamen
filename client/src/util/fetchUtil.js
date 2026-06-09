@@ -1,5 +1,5 @@
 
-export async function fetchGet (endpoint) {
+export async function fetchGet(endpoint) {
   try {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
       credentials: 'include'
@@ -10,7 +10,7 @@ export async function fetchGet (endpoint) {
   }
 }
 
-export async function fetchPost (endpoint, body) {
+export async function fetchPost(endpoint, body) {
   try {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`, {
       method: 'POST',

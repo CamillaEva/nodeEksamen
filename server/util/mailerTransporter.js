@@ -5,14 +5,14 @@ export async function sendMail(usersEmail) {
 
     service: 'gmail',
     auth: {
-      user: 'cami.the.developer@gmail.com',
+      user: process.env.MAIL_USER,
       pass: process.env.GOOGLE_APP_PASSWORD
     }
   });
 
   try {
     const info = await transporter.sendMail({
-      from: '"the health app team" <cami.the.developer@gmail.com>',
+      from: '"the health app team" <process.env.MAIL_USER>',
       to: usersEmail,
       subject: 'Login detected ',
       text: 'Someone just logged in to your health app account.',

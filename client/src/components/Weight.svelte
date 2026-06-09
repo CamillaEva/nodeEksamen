@@ -2,7 +2,7 @@
     import { userInfo } from "../stores/AuthStore.js";
     import { fetchPost } from "../util/fetchUtil.js";
 
-    let newWeight = 0;
+    let newWeight = "";
 
     async function handleAddNewWeight() {
         if (newWeight > 0) {
@@ -15,13 +15,14 @@
                 currentWeight: Number(newWeight),
             }));
 
-            newWeight = 0;
+            newWeight = "";
         }
     }
 
     function getCurrentWeight() {
         return $userInfo.currentWeight || $userInfo.start_weight;
     }
+    
 </script>
 
 <div>

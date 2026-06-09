@@ -3,7 +3,7 @@
     import { caloriesInfo, userInfo } from "../stores/AuthStore.js";
     import { fetchGet, fetchPost } from "../util/fetchUtil.js";
 
-    let calories = 0;
+    let calories = "";
     let usedCalories = 0;
     let calorieList = [];
 
@@ -30,15 +30,18 @@
                 calories: Number(calories),
             });
 
-            calories = 0;
+            calories = "";
 
             await getCalories();
         }
     }
 
+
     onMount(async () => {
         await getCalories();
     });
+
+    
 </script>
 
 <div class="calorie-container">
@@ -47,7 +50,6 @@
 
 <div class="input-button">
     <input type="number" placeholder="input calories" bind:value={calories} />
-
     <div>
         <button onclick={handleAddCalories}>
             <img
@@ -104,5 +106,9 @@
     .list,
     h3 {
         color: #321900;
+    }
+
+    ::marker {
+        color: transparent;
     }
 </style>
